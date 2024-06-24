@@ -7,6 +7,7 @@ var messageForm = document.querySelector('#messageForm');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+const websocketurl= "/ws";
 
 var stompClient = null;
 var username = null;
@@ -23,10 +24,22 @@ function connect(event) {
         usernamePage.classList.add('hidden');
         chatPage.classList.remove('hidden');
 
-        var socket = new SockJS('/ws');
+        console.log("Username entered:", username);
+
+        const socket = new SockJS(websocketurl);
         stompClient = Stomp.over(socket);
 
-        stompClient.connect({}, onConnected, onError);
+        console.log("SockJS object created:", socket);
+
+        stompClient.connect({}, function(frame) {
+            console.log("Connected to WebSocket server:", frame);
+            onConnected(frame);
+        }, function(error) {
+            console.error("Error connecting to WebSocket server:", error);
+            onError(error);
+        });
+
+        console.log("WebSocket connection attempt made.");
     }
     event.preventDefault();
 }
@@ -68,6 +81,8 @@ function sendMessage(event) {
 
 
 function onMessageReceived(payload) {
+    console.log('Received payload:', payload);
+
     var message = JSON.parse(payload.body);
 
     var messageElement = document.createElement('li');

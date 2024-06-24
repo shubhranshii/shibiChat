@@ -1,11 +1,12 @@
-package controller;
+package com.shubhranshi.shibiChat.controller;
 
-import model.Message;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+
+import com.shubhranshi.shibiChat.model.Message;
 
 @Controller
 public class ChatController {
@@ -18,6 +19,8 @@ public class ChatController {
         return message;
     }
 
+    @MessageMapping("chat.addUser")
+    @SendTo("/topic/public")
     public Message addUser(
             @Payload Message message,
             SimpMessageHeaderAccessor headerAccessor

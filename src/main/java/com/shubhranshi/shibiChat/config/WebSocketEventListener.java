@@ -1,9 +1,11 @@
-package config;
+package com.shubhranshi.shibiChat.config;
 
 import com.shubhranshi.shibiChat.MessageType;
+import com.shubhranshi.shibiChat.model.Message;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import model.Message;
+
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
@@ -16,6 +18,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 public class WebSocketEventListener {
 
     private final SimpMessageSendingOperations messageTemplate;
+
     @EventListener
     public void HandleWebSocketDisconnectListener(
             SessionDisconnectEvent event

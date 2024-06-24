@@ -1,4 +1,4 @@
-package model;
+package com.shubhranshi.shibiChat.model;
 
 import com.shubhranshi.shibiChat.MessageType;
 import lombok.*;
