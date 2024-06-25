@@ -12,7 +12,5 @@ import lombok.*;
 public class Message {
     private String content;
     private String sender;
-    private String receiver;
-    //private String timestamp;
     private MessageType type;
 }
