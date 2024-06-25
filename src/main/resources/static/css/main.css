@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-html,body {
+html, body {
     height: 100%;
     overflow: hidden;
 }
@@ -19,6 +19,14 @@ body {
     color: #333;
     background-color: #f4f4f4;
     height: 100%;
+}
+
+#bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 .clearfix:after {
@@ -99,6 +107,7 @@ button.accent {
 
 .username-page-container {
     background: #fff;
+    opacity: 0.8;
     box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
     border-radius: 2px;
     width: 100%;
@@ -121,22 +130,58 @@ button.accent {
     margin-top: 10px;
 }
 
-
 #chat-page {
     position: relative;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-wrapper {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: calc(100% - 60px);
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+}
+
+.side-bar {
+    width: 250px;
+    background-color: #fff;
+    opacity: 0.85;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.side-bar h2 {
+    margin: 0 0 10px 0;
+}
+
+.side-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-bar ul li {
+    padding: 10px;
+    border-bottom: 1px solid #f4f4f4;
+    cursor: pointer;
 }
 
 .chat-container {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    border-left: 1px solid #ccc;
+    flex-grow: 1;
     background-color: #fff;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
-    margin-top: 30px;
-    height: calc(100% - 60px);
-    max-height: 600px;
-    position: relative;
+    opacity: 0.85;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 #chat-page ul {
@@ -146,7 +191,7 @@ button.accent {
     overflow: auto;
     overflow-y: scroll;
     padding: 0 20px 0px 20px;
-    height: calc(100% - 150px);
+    flex-grow: 1;
 }
 
 #chat-page #messageForm {
@@ -239,9 +284,7 @@ button.accent {
     width: 100%;
 }
 
-
 @media screen and (max-width: 730px) {
-
     .chat-container {
         margin-left: 10px;
         margin-right: 10px;
